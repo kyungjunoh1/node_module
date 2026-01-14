@@ -16,7 +16,7 @@ request, response
 app.get( "/mem", (req, res) => {
     console.log("서버 실행 mem 통신 성공")
     console.log("mem 연산 끝나고 데이터 보냄")
-    const end = Date.now() + 3000;
+    const end = Date.now() //+ 3000;
     for( ; Date.now() < end ; ){
         
     }
@@ -33,7 +33,16 @@ app.post("/mem", (req, res) => {
 })
 
 app.post("/login", (req, res) => {
-    console.log("request body : ", req.body)
+    const end = Date.now() + 1000;
+    for( ; Date.now() < end ; ){}
+
+    //console.log("request body : ", req.body)
+    const member = data_set.filter( d => d.id === req.body.id )[0]
+    if(member){
+        if(member.pwd === req.body.pwd)
+            return res.json(0)
+    }
+    
     res.json(1)
 })
 
