@@ -16,6 +16,10 @@ request, response
 app.get( "/mem", (req, res) => {
     console.log("서버 실행 mem 통신 성공")
     console.log("mem 연산 끝나고 데이터 보냄")
+    const end = Date.now() + 3000;
+    for( ; Date.now() < end ; ){
+        
+    }
     res.json (data_set);
 })
 app.get("/mem/:id", (req, res) => {
@@ -27,6 +31,12 @@ app.post("/mem", (req, res) => {
     console.log("request body : ", req.body)
     data_set = data_set.concat(req.body);
 })
+
+app.post("/login", (req, res) => {
+    console.log("request body : ", req.body)
+    res.json(1)
+})
+
 app.listen(4000, ()=>console.log("4000 back 구동"))
 
 
